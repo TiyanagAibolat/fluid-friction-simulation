@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kışkan Sürtünmesi Simülasyonu</title>
+    <!-- TailwindCSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Three.js Kütüphanesi -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body class="bg-slate-900 text-white overflow-hidden">
+    <div class="w-full h-screen flex flex-col">
+        <!-- Başlık -->
+        <div class="bg-slate-800 border-b border-slate-700 px-6 py-4">
+            <h1 class="text-3xl font-bold text-blue-400">Kışkan Sürtünmesi Simülasyonu</h1>
+            <p class="text-slate-400 text-sm mt-1">3D Görselleştirme ve Dinamik Grafik Analizi</p>
+        </div>
+
+        <!-- Ana İçerik -->
+        <div class="flex flex-1 gap-4 p-4">
+            <!-- Sol Taraf: 3D Simülasyon -->
+            <div class="flex-1">
+                <div id="canvas-container" class="w-full h-full bg-slate-800 rounded-lg border border-slate-700 shadow-lg"></div>
+            </div>
+
+            <!-- Sağ Taraf: Grafik ve Kontroller -->
+            <div class="flex flex-col gap-4 w-96">
+                <!-- Grafik -->
+                <div class="flex-1 bg-slate-800 rounded-lg border border-slate-700 p-4 shadow-lg">
+                    <canvas id="graph-canvas" width="350" height="350" class="w-full border border-slate-600 rounded bg-slate-900"></canvas>
+                </div>
+
+                <!-- İstatistikler -->
+                <div class="bg-slate-800 rounded-lg border border-slate-700 p-4 space-y-2 shadow-lg">
+                    <div class="text-sm">
+                        <span class="text-slate-400">Hız:</span>
+                        <span id="velocity-display" class="text-cyan-400 font-mono font-bold">0.00 m/s</span>
+                    </div>
+                    <div class="text-sm">
+                        <span class="text-slate-400">Sürtünme Kuvveti:</span>
+                        <span id="force-display" class="text-red-400 font-mono font-bold">0.00 N</span>
+                    </div>
+                    <div class="text-sm">
+                        <span class="text-slate-400">Konumu:</span>
+                        <span id="position-display" class="text-green-400 font-mono font-bold">0.00 m</span>
+                    </div>
+                    <div class="text-sm">
+                        <span class="text-slate-400">Yay Durumu:</span>
+                        <span id="spring-display" class="text-yellow-400 font-mono font-bold">Kapalı</span>
+                    </div>
+                </div>
+
+                <!-- Butonlar -->
+                <div class="flex flex-col gap-3">
+                    <button id="btn-left" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg transition duration-200 shadow-lg">
+                        ← Sola İt
+                    </button>
+                    <button id="btn-right" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-4 rounded-lg transition duration-200 shadow-lg">
+                        Sağa İt →
+                    </button>
+                    <button id="btn-spring" class="w-full bg-yellow-600 hover:bg-yellow-700 text-white font-bold py-3 px-4 rounded-lg transition duration-200 shadow-lg">
+                        Yayı Aç/Kapat
+                    </button>
+                    <button id="btn-reset" class="w-full bg-slate-700 hover:bg-slate-600 text-white font-bold py-3 px-4 rounded-lg transition duration-200 shadow-lg">
+                        Sıfırla
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="physics.js"></script>
+    <script src="three-renderer.js"></script>
+    <script src="graph-renderer.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
